@@ -32,6 +32,25 @@ npm run android
 yarn android
 ```
 
+#### Build ARM32/ARM64 release artifacts
+
+Build one signed Android App Bundle and one universal ARM APK:
+
+```sh
+cd android
+.\gradlew.bat bundleRelease assembleRelease -PbuildUniversalArtifact
+```
+
+Both artifacts include ARMv7 (32-bit) and ARM64 (64-bit), and exclude x86
+architectures. The AAB is written to `android/app/build/outputs/bundle/release/`;
+the universal APK is written to `android/app/build/outputs/apk/release/`.
+Google Play can deliver optimized device-specific APKs from the AAB. The
+universal APK includes both ARM architectures and may exceed 20 MB.
+
+To build smaller, separate APKs instead, omit `-PbuildUniversalArtifact` and
+run `.\gradlew.bat assembleRelease`; install the APK matching the device's
+architecture.
+
 ### iOS
 
 For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).

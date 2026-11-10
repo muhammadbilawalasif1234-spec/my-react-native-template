@@ -1,4 +1,9 @@
-import mobileAds, { AdEventType, RewardedAd, RewardedAdEventType, TestIds } from 'react-native-google-mobile-ads';
+import mobileAds, {
+  AdEventType,
+  RewardedAd,
+  RewardedAdEventType,
+  TestIds,
+} from 'react-native-google-mobile-ads';
 
 const adUnitId = __DEV__ ? TestIds.REWARDED : 'ca-app-pub-xxxxxxxx~xxxxxxxx';
 
@@ -47,18 +52,15 @@ class RewardedManager {
     if (this.isLoaded && this.rewardedAd) {
       const unsubscribeEarned = this.rewardedAd.addAdEventListener(
         RewardedAdEventType.EARNED_REWARD,
-        (reward) => {
+        reward => {
           onRewardEarned(reward);
-        },
+        }
       );
 
-      const unsubscribeClosed = this.rewardedAd.addAdEventListener(
-        AdEventType.CLOSED,
-        () => {
-          unsubscribeEarned();
-          unsubscribeClosed();
-        },
-      );
+      const unsubscribeClosed = this.rewardedAd.addAdEventListener(AdEventType.CLOSED, () => {
+        unsubscribeEarned();
+        unsubscribeClosed();
+      });
 
       this.rewardedAd.show();
       this.isLoaded = false;

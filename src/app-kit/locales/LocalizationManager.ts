@@ -35,8 +35,8 @@ class LocalizationManager {
    * Get translated string by key
    */
   public t(key: string): string {
-    const langTranslations = this.translations[this.currentLocale] || this.translations['en'];
-    return langTranslations[key] || this.translations['en'][key] || key;
+    const langTranslations = this.translations[this.currentLocale] || this.translations.en;
+    return langTranslations[key] || this.translations.en[key] || key;
   }
 
   /**

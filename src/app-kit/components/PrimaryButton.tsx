@@ -1,10 +1,10 @@
 import React from 'react';
-import { 
-  TouchableOpacity, 
-  Text, 
-  StyleSheet, 
-  ActivityIndicator, 
-  TouchableOpacityProps 
+import {
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+  TouchableOpacityProps,
 } from 'react-native';
 import { useTheme } from '@/app-kit/theme/useTheme';
 
@@ -45,9 +45,7 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
       {loading ? (
         <ActivityIndicator color={colors.background} />
       ) : (
-        <Text style={[styles.text, { color: colors.background }]}>
-          {title}
-        </Text>
+        <Text style={[styles.text, { color: colors.background }]}>{title}</Text>
       )}
     </TouchableOpacity>
   );

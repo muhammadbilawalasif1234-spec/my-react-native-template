@@ -6,7 +6,7 @@ import { Spacing } from '@/app-kit/theme/spacing';
 /** Returns theme colors and spacing based on the device color scheme. */
 export const useTheme = () => {
   const colorScheme = useColorScheme();
-  const isDark = colorScheme === "dark";
+  const isDark = colorScheme === 'dark';
 
   const themeColors: ColorThemeType = isDark ? Colors.dark : Colors.light;
 
